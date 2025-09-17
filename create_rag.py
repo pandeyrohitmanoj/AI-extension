@@ -9,8 +9,9 @@ from sentence_transformers import SentenceTransformer
 from typing import List, Dict, Any, Optional
 from create_vector import load_or_create_vectordb
 import json
-
-
+from dotenv import load_dotenv
+import os
+load_dotenv()
 def create_local_embeddings_langchain():
     class LocalEmbeddings(Embeddings):
         def __init__(self):
@@ -96,7 +97,7 @@ def create_langchain_vectorstore(address: str, embeddings):
     
     return LocalVectorStore(vectordb, embeddings)
 
-GEMINI_KEY='AIzaSyDjdixm8_feU60KCTGEKhmQfaCWsXOUVtc'
+GEMINI_KEY= os.getenv('GEMINI_KEY') or ''
 
 def token_tracking(response):
     if hasattr(response, 'response_metadata'):
