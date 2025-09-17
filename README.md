@@ -1,7 +1,11 @@
+Code assistant for Vs Code:
+
+
 Setup:
 
 To create environment: 
 conda env create -f environment.yml
+npm i
 
 To start the Fast API :
 python main.py
